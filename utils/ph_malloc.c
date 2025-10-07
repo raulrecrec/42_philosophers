@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:29:50 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/07 18:22:35 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:26:27 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ph_malloc(size_t size, t_data *data)
 	ptr = malloc(size);
 	if (ptr == NULL)
 	{
-		data->err = ERR_MALLOC;
+		ph_error(data, ERR_MALLOC);
 		return (NULL);
 	}
 	return (ptr);
