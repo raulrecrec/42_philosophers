@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/08 10:42:33 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:30:22 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,13 @@ typedef struct data
 typedef struct philo
 {
 	int				id;
+	int				index;
+	pthread_t		thread;
 	pthread_mutex_t	*left_hand;
 	pthread_mutex_t	*right_hand;
+	long long		last_meal_ms;
 	int				times_eaten;
+	int				target_meals;
 	t_data			*data;
 } t_philo;
 
