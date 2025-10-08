@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/08 11:30:22 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/08 13:19:24 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <string.h>	// memset
 # include <sys/time.h>	// gettimeofday
 # include <pthread.h>	// threads & mutex
-#include <stdbool.h>	// bool
+# include <stdbool.h>	// bool
+# include <limits.h>		// INT_MAX
 
 typedef struct philo t_philo;
 
