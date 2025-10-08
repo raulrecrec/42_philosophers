@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:48:18 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/08 14:09:45 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:50:02 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,8 @@ int	main(int argc, char **argv)
 		return (ERR_ARGS);
 	}
 	data_init(&data);
+	data.err = parser_and_validate_arguments(&data, argc, argv);
+	if (data.err != ERR_OK)
+		return (data.err);
+	return (0);
 }
