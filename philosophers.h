@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/08 10:12:32 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:42:33 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct philo
 
 
 // utils
-void		*ph_malloc(size_t size, t_data *data);
+void		*ph_malloc(t_data *data, size_t size);
 long long	ph_atoll(t_data *data, const char *nptr);
 int			ph_error(t_data *data, t_err error);
 bool		ph_isdigit(char ch);
