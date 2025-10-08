@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:30:03 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/07 21:18:25 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:05:12 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ long long	ph_atoll(const char *nptr, t_data *data)
 		res = res * 10 + (*nptr - '0');
 		nptr++;
 	}
-	if (*nptr != '\0' || !ph_isdigit(*nptr))
+	if (*nptr != '\0')
 		return(ph_error(data, ERR_ARGS));
 	return (res);
 }
