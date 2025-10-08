@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/09/25 19:43:46 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:12:32 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,20 @@
 # include <string.h>	// memset
 # include <sys/time.h>	// gettimeofday
 # include <pthread.h>	// threads & mutex
+#include <stdbool.h>	// bool
 
 typedef struct philo t_philo;
+
+typedef enum status_err
+{
+	ERR_OK = 0,
+	ERR_ARGS,				// argumentos inválidos / faltan
+	ERR_RANGE,				// valores fuera de rango (>0, etc.)
+	ERR_MALLOC,				// fallo en malloc
+	ERR_MUTEX_INIT,			// fallo al iniciar mutex
+	ERR_THREAD_CREATE,		// fallo al crear hilos
+	// Añadir más según necesite
+}	t_err;
 
 typedef struct data
 {
@@ -36,6 +48,7 @@ typedef struct data
 	pthread_mutex_t	prints;
 	pthread_mutex_t	etc;
 	t_philo	*philos;
+	t_err	err;
 } t_data;
 
 typedef struct philo
@@ -43,8 +56,16 @@ typedef struct philo
 	int				id;
 	pthread_mutex_t	*left_hand;
 	pthread_mutex_t	*right_hand;
-	int		times_eaten;
-	t_data	*data;
+	int				times_eaten;
+	t_data			*data;
 } t_philo;
+
+
+// utils
+void		*ph_malloc(size_t size, t_data *data);
+long long	ph_atoll(t_data *data, const char *nptr);
+int			ph_error(t_data *data, t_err error);
+bool		ph_isdigit(char ch);
+int			ph_strlen(const char *str);
 
 #endif
