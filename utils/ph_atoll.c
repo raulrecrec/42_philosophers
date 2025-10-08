@@ -6,13 +6,13 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:30:03 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/08 10:05:12 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:12:25 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long long	ph_atoll(const char *nptr, t_data *data)
+long long	ph_atoll(t_data *data, const char *nptr)
 {
 	long long	res;
 
