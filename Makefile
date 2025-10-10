@@ -6,7 +6,7 @@
 #    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/25 16:25:10 by rexposit          #+#    #+#              #
-#    Updated: 2025/09/25 16:35:41 by rexposit         ###   ########.fr        #
+#    Updated: 2025/10/10 19:07:34 by rexposit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,18 +15,29 @@ NAME = philo
 
 # Compilador y flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -pthread
 
-# Archivos fuente de philisophers
-SRCS =
+# Archivo fuente de philisophers
+SRCS =	philosophers.c	\
+
+# Archivos fuente utils
+SRCS +=	utils/ph_atoll.c	\
+		utils/ph_error.c	\
+		utils/ph_isdigit.c	\
+		utils/ph_malloc.c	\
+		utils/ph_strlen.c
 
 # Convertimos los archivos .c en .o
 OBJS = $(SRCS:.c=.o)
 
+# Headers
+HEADERS = philosophers.h
+$(OBJS): $(HEADERS)
+
 # Regla principal (compila el ejecutable)
 all: $(NAME)
 
-# Compilar push_swap
+# Compilar philosophers
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "Compilacion completada: $(NAME)"
@@ -48,3 +59,5 @@ fclean: clean
 
 # Recompilar desde cero
 re: fclean all
+
+.PHONY: all clean fclean re
