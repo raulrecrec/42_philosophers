@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/11 04:07:08 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/11 16:46:25 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,8 @@ bool		ph_isdigit(char ch);
 int			ph_strlen(const char *str);
 long long	now_ms(void);
 void		smart_usleep(long long ms);
+
+// core
+t_err	setup_alloc(t_data *data);
 
 #endif
