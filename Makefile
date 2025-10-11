@@ -6,7 +6,7 @@
 #    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/25 16:25:10 by rexposit          #+#    #+#              #
-#    Updated: 2025/10/10 21:42:26 by rexposit         ###   ########.fr        #
+#    Updated: 2025/10/11 16:47:09 by rexposit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,9 @@ SRCS +=	utils/ph_atoll.c	\
 		utils/ph_malloc.c	\
 		utils/ph_strlen.c	\
 		utils/ph_time.c
+
+# Archivos fuente core
+SRCS +=	core/setup_alloc.c	\
 
 # Convertimos los archivos .c en .o
 OBJS = $(SRCS:.c=.o)
