@@ -6,7 +6,7 @@
 #    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/25 16:25:10 by rexposit          #+#    #+#              #
-#    Updated: 2025/10/14 20:41:48 by rexposit         ###   ########.fr        #
+#    Updated: 2025/10/14 22:34:38 by rexposit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS +=	utils/ph_atoll.c	\
 
 # Archivos fuente core
 SRCS +=	core/setup_alloc.c	\
-		core/init_mutexes.c
+		core/init_mutexes.c	\
+		core/init_philos
 
 # Convertimos los archivos .c en .o
 OBJS = $(SRCS:.c=.o)
