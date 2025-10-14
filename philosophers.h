@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/11 16:46:25 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/14 20:39:04 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void		smart_usleep(long long ms);
 
 // core
 t_err	setup_alloc(t_data *data);
+t_err	init_mutexes(t_data *data);
 
 #endif
