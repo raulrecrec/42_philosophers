@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:48:18 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/08 14:50:02 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:30:05 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_err	data_set(t_data *data, int index, long long value)
 	return (ERR_OK);
 }
 
-t_err	parser_and_validate_arguments(t_data *data, int argc, char **argv)
+t_err	parser_and_validate_arguments(t_data *data, int argc, const char **argv)
 {
 	int			i;
 	long long	value;
@@ -63,7 +63,10 @@ t_err	parser_and_validate_arguments(t_data *data, int argc, char **argv)
 				return (status);
 		}
 		else
+		{
+			ph_error(data, ERR_ARGS);
 			return (data->err);
+		}
 		i++;
 	}
 	return (ERR_OK);
