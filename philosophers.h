@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/17 21:25:57 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:03:27 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ t_err	setup_alloc(t_data *data);
 t_err	init_mutexes(t_data *data);
 void	init_philos(t_data *data);
 int		get_dead(t_data *data);
+void	set_dead(t_data *data, int value);
 void	print_status(t_philo *philo, const char *msg);
 void	*philo_routine(void *arg);
 
