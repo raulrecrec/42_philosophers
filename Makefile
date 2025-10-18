@@ -6,7 +6,7 @@
 #    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/25 16:25:10 by rexposit          #+#    #+#              #
-#    Updated: 2025/10/17 21:26:44 by rexposit         ###   ########.fr        #
+#    Updated: 2025/10/18 18:44:29 by rexposit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS +=	core/setup_alloc.c		\
 		core/init_philos		\
 		core/state.c			\
 		core/philo_routine.c	\
+		core/monitor.c
 
 # Convertimos los archivos .c en .o
 OBJS = $(SRCS:.c=.o)
