@@ -6,7 +6,7 @@
 #    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/25 16:25:10 by rexposit          #+#    #+#              #
-#    Updated: 2025/10/21 05:18:16 by rexposit         ###   ########.fr        #
+#    Updated: 2025/10/21 19:56:19 by rexposit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ NAME = philo
 
 # Compilador y flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -pthread
+CFLAGS = -Wall -Wextra -Werror -g -pthread -I.
 
 # Archivo fuente de philisophers
-SRCS =	philosophers.c	\
+SRCS =	philosophers.c
 
 # Archivos fuente utils
 SRCS +=	utils/ph_atoll.c	\
@@ -26,12 +26,12 @@ SRCS +=	utils/ph_atoll.c	\
 		utils/ph_isdigit.c	\
 		utils/ph_malloc.c	\
 		utils/ph_strlen.c	\
-		utils/ph_time.c	
+		utils/ph_time.c
 
 # Archivos fuente core
 SRCS +=	core/setup_alloc.c		\
 		core/init_mutexes.c		\
-		core/init_philos		\
+		core/init_philos.c		\
 		core/state.c			\
 		core/philo_routine.c	\
 		core/monitor.c			\
@@ -39,10 +39,6 @@ SRCS +=	core/setup_alloc.c		\
 
 # Convertimos los archivos .c en .o
 OBJS = $(SRCS:.c=.o)
-
-# Headers
-HEADERS = philosophers.h
-$(OBJS): $(HEADERS)
 
 # Regla principal (compila el ejecutable)
 all: $(NAME)
@@ -57,6 +53,10 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compilado: $<"
 
+# Headers
+HEADERS = philosophers.h
+$(OBJS): $(HEADERS)
+
 # Eliminar archivos .o
 clean:
 	@rm -f $(OBJS)
@@ -69,5 +69,9 @@ fclean: clean
 
 # Recompilar desde cero
 re: fclean all
+
+print-%:
+	@echo '$* = $($*)'
+
 
 .PHONY: all clean fclean re
