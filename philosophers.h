@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/18 17:03:27 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/21 03:00:01 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ int		get_dead(t_data *data);
 void	set_dead(t_data *data, int value);
 void	print_status(t_philo *philo, const char *msg);
 void	*philo_routine(void *arg);
+void	*monitor_routine(void *arg);
 
 #endif
