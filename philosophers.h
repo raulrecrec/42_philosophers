@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/21 18:29:32 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/22 00:43:14 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct data
 	pthread_mutex_t	death;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	prints;
-	pthread_mutex_t	etc;
+	pthread_mutex_t	*full;
 	t_philo	*philos;
 	t_err	err;
 } t_data;
@@ -60,6 +60,7 @@ typedef struct philo
 	pthread_t		thread;
 	pthread_mutex_t	*left_hand;
 	pthread_mutex_t	*right_hand;
+	pthread_mutex_t	meal;
 	long long		last_meal_ms;
 	int				times_eaten;
 	int				target_meals;
