@@ -6,18 +6,56 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:38:00 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/18 18:42:48 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/21 02:59:40 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+static int	scan_deaths(t_data *data, t_philo *philo, long long now)
+{
+	long long	last_meal;
+
+	pthread_mutex_lock(&data->death);
+	last_meal = philo->last_meal_ms;
+	pthread_mutex_unlock(&data->death);
+	if (now - last_meal >= data->time_die)
+	{
+		print_status(philo, "died");
+		set_dead(data, 1);
+		return (-1);
+	}
+	else
+		return (0);
+}
+
+static int	check_all_full(t_data *data)
+{
+	int	count;
+	int	i;
+	t_philo	*philo;
+
+	count = 0;
+	i = 0;
+	while (i < data->total_philos)
+	{
+		philo = &data->philos[i];
+		if (philo->times_eaten >= data->must_eat)
+			count++;
+		i++;
+	}
+	if (count == data->total_philos)
+	{
+		set_dead(data, 1);
+		return (-1);
+	}
+	else
+		return (0);
+}
+
 void	*monitor_routine(void *arg)
 {
 	int			i;
-	int			j;
-	int			count;
-	long long	last_meal;
 	long long	now;
 	t_data		*data;
 	t_philo		*philo;
@@ -30,33 +68,14 @@ void	*monitor_routine(void *arg)
 		while(i < data->total_philos)
 		{
 			philo = &data->philos[i];
-			pthread_mutex_lock(&data->death);
-			last_meal = philo->last_meal_ms;
-			pthread_mutex_unlock(&data->death);
-			if (now - last_meal >= data->time_die)
-			{
-				print_status(philo, "died");
-				set_dead(data, 1);
+			if (scan_deaths(data, philo, now) == -1)
 				return (NULL);
-			}
 			i++;
 		}
 		if (data->must_eat != -1)
 		{
-			count = 0;
-			j = 0;
-			while (j < data->total_philos)
-			{
-				philo = &data->philos[j];
-				if (philo->times_eaten >= data->must_eat)
-					count++;
-				j++;
-			}
-			if (count == data->total_philos)
-			{
-				set_dead(data, 1);
+			if (check_all_full(data) == -1)
 				return (NULL);
-			}
 		}
 		smart_usleep(2);
 	}
