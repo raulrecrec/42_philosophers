@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/21 05:18:03 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:29:32 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/time.h>	// gettimeofday
 # include <pthread.h>	// threads & mutex
 # include <stdbool.h>	// bool
-# include <limits.h>		// INT_MAX
+# include <limits.h>	// INT_MAX
 
 typedef struct philo t_philo;
 
@@ -85,6 +85,9 @@ void	set_dead(t_data *data, int value);
 void	print_status(t_philo *philo, const char *msg);
 void	*philo_routine(void *arg);
 void	*monitor_routine(void *arg);
+void	destroy_forks(t_data *data);
+void	destroy_globals(t_data *data);
+void	free_arrays(t_data *data);
 void	cleanup_after_sim(t_data *data, pthread_t *thread, pthread_t monitor);
 
 #endif
