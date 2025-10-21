@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:38:00 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/21 02:59:40 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/21 05:21:42 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static int	scan_deaths(t_data *data, t_philo *philo, long long now)
 
 static int	check_all_full(t_data *data)
 {
-	int	count;
-	int	i;
+	int		count;
+	int		i;
 	t_philo	*philo;
 
 	count = 0;
@@ -65,7 +65,7 @@ void	*monitor_routine(void *arg)
 	{
 		i = 0;
 		now = now_ms();
-		while(i < data->total_philos)
+		while (i < data->total_philos)
 		{
 			philo = &data->philos[i];
 			if (scan_deaths(data, philo, now) == -1)

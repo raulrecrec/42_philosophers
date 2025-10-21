@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 18:27:36 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/14 20:35:52 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/21 05:21:11 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_err	init_mutexes_prints_death(t_data *data)
 	if (pthread_mutex_init(&data->prints, NULL) != 0)
 	{
 		ph_error(data, ERR_MUTEX_INIT);
-		return (data->err);	
+		return (data->err);
 	}
 	if (pthread_mutex_init(&data->death, NULL) != 0)
 	{
