@@ -6,13 +6,13 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 03:07:05 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/21 05:17:47 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/21 07:36:05 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static void	destroy_forks(t_data *data)
+void	destroy_forks(t_data *data)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ static void	destroy_forks(t_data *data)
 	}
 }
 
-static void	destroy_globals(t_data *data)
+void	destroy_globals(t_data *data)
 {
 	if (pthread_mutex_destroy(&data->death) != 0)
 		ph_error(data, ERR_MUTEX_DESTROY);
@@ -35,7 +35,7 @@ static void	destroy_globals(t_data *data)
 		ph_error(data, ERR_MUTEX_DESTROY);
 }
 
-static void	free_arrays(t_data *data)
+void	free_arrays(t_data *data)
 {
 	free(data->philos);
 	data->philos = NULL;
