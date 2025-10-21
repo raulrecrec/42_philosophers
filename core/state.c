@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 23:07:37 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/15 00:05:39 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/21 21:52:47 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	print_status(t_philo *philo, const char *msg)
 	if (ms == -1)
 		return ;
 	pthread_mutex_lock(&philo->data->prints);
-	printf("%lld %d %s\n", ms, philo->id, msg);
+	if (philo->data->dead == 0
+		|| (msg[0]=='d' && msg[1]=='i' && msg[2]=='e' && msg[3]=='d'))
+		printf("%lld %d %s\n", ms, philo->id, msg);
 	pthread_mutex_unlock(&philo->data->prints);
 }
