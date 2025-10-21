@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 21:42:05 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/11 04:01:21 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/21 22:45:32 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void	smart_usleep(long long ms)
 		if (ms_left > 2)
 			usleep(1000);
 		else
-			usleep(200);
+			usleep(300);
 	}
 }
