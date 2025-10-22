@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/22 00:43:14 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/23 01:03:09 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct data
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	prints;
 	pthread_mutex_t	*full;
+	pthread_mutex_t	m_last_meal_ms;
 	t_philo	*philos;
 	t_err	err;
 } t_data;
