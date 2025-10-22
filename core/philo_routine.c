@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 15:55:15 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/23 00:53:35 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/23 01:03:54 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static int
 		return (-1);
 	}
 	print_status(ph, "has taken a fork");
-	pthread_mutex_lock(&ph->data->last_meal_ms);
+	pthread_mutex_lock(&ph->data->m_last_meal_ms);
 	ph->last_meal_ms = now_ms();
-	pthread_mutex_unlock(&ph->data->last_meal_ms);
+	pthread_mutex_unlock(&ph->data->m_last_meal_ms);
 	print_status(ph, "is eating");
 	ph->times_eaten++;
 	smart_usleep(ph->data->time_eat);
