@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 03:07:05 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/21 07:36:05 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/23 01:07:05 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	destroy_globals(t_data *data)
 	if (pthread_mutex_destroy(&data->death) != 0)
 		ph_error(data, ERR_MUTEX_DESTROY);
 	if (pthread_mutex_destroy(&data->prints) != 0)
+		ph_error(data, ERR_MUTEX_DESTROY);
+	if (pthread_mutex_destroy(&data->m_last_meal_ms) != 0)
 		ph_error(data, ERR_MUTEX_DESTROY);
 }
 
