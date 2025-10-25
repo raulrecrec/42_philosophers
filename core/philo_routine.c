@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 15:55:15 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/23 01:03:54 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/25 21:53:01 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void
 static void
 	get_min_max_fork(t_philo *ph, pthread_mutex_t **min, pthread_mutex_t **max)
 {
-	if (ph->left_hand < ph->right_hand)
+	if (ph->id % 2 == 0)
 	{
 		*min = ph->left_hand;
 		*max = ph->right_hand;
@@ -58,9 +58,9 @@ static int
 	print_status(ph, "has taken a fork");
 	pthread_mutex_lock(&ph->data->m_last_meal_ms);
 	ph->last_meal_ms = now_ms();
-	pthread_mutex_unlock(&ph->data->m_last_meal_ms);
 	print_status(ph, "is eating");
 	ph->times_eaten++;
+	pthread_mutex_unlock(&ph->data->m_last_meal_ms);
 	smart_usleep(ph->data->time_eat);
 	pthread_mutex_unlock(max);
 	pthread_mutex_unlock(min);
