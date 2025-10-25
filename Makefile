@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
+#    By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/25 16:25:10 by rexposit          #+#    #+#              #
-#    Updated: 2025/10/21 19:56:19 by rexposit         ###   ########.fr        #
+#    Updated: 2025/10/25 21:56:40 by rexposit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@
 NAME = philo
 
 # Compilador y flags
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -pthread -I.
-
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I.
+#CFLAGS += -g3 -fsanitize=thread
 # Archivo fuente de philisophers
 SRCS =	philosophers.c
 
