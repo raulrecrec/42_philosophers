@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:38:00 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/21 05:21:42 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/10/25 21:42:39 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	scan_deaths(t_data *data, t_philo *philo, long long now)
 {
 	long long	last_meal;
 
-	pthread_mutex_lock(&data->death);
+	pthread_mutex_lock(&data->m_last_meal_ms);
 	last_meal = philo->last_meal_ms;
-	pthread_mutex_unlock(&data->death);
+	pthread_mutex_unlock(&data->m_last_meal_ms);
 	if (now - last_meal >= data->time_die)
 	{
 		print_status(philo, "died");
@@ -40,8 +40,10 @@ static int	check_all_full(t_data *data)
 	while (i < data->total_philos)
 	{
 		philo = &data->philos[i];
+		pthread_mutex_lock(&data->m_last_meal_ms);
 		if (philo->times_eaten >= data->must_eat)
 			count++;
+		pthread_mutex_unlock(&data->m_last_meal_ms);
 		i++;
 	}
 	if (count == data->total_philos)
