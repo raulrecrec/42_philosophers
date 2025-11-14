@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/23 01:03:09 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/11/14 22:02:53 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ void	destroy_forks(t_data *data);
 void	destroy_globals(t_data *data);
 void	free_arrays(t_data *data);
 void	cleanup_after_sim(t_data *data, pthread_t *thread, pthread_t monitor);
+int		create_threads_and_monitor(t_data *data, pthread_t **threads, pthread_t *monitor);
+
 
 #endif
