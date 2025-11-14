@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 22:09:18 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/14 22:32:34 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/11/14 04:52:41 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_philos(t_data *data)
 		philo->left_hand = &data->forks[i];
 		philo->right_hand = &data->forks[(i + 1) % n];
 		philo->times_eaten = 0;
-		philo->last_meal_ms = 0;
+		philo->last_meal_ms = data->time_start;
 		philo->data = data;
 		i++;
 	}
