@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 15:55:15 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/25 21:53:01 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/11/14 05:21:37 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	*philo_routine(void *arg)
 		return (one_fork(philo));
 	get_min_max_fork(philo, &min, &max);
 	if (philo->id % 2 == 0)
-		smart_usleep(2);
+		usleep(1000);
 	while (get_dead(philo->data) == 0)
 	{
 		print_status(philo, "is thinking");
