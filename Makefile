@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/25 16:25:10 by rexposit          #+#    #+#              #
-#    Updated: 2025/10/25 21:56:40 by rexposit         ###   ########.fr        #
+#    Updated: 2025/11/14 22:03:27 by rexposit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS +=	core/setup_alloc.c		\
 		core/state.c			\
 		core/philo_routine.c	\
 		core/monitor.c			\
-		core/cleanup.c
+		core/cleanup.c			\
+		core/threads.c
 
 # Convertimos los archivos .c en .o
 OBJS = $(SRCS:.c=.o)
