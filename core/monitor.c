@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:38:00 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/25 21:42:39 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/11/14 05:46:13 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,25 @@ static int	scan_deaths(t_data *data, t_philo *philo, long long now)
 	pthread_mutex_lock(&data->m_last_meal_ms);
 	last_meal = philo->last_meal_ms;
 	pthread_mutex_unlock(&data->m_last_meal_ms);
-	if (now - last_meal >= data->time_die)
+	if (data->must_eat == -1)
 	{
-		print_status(philo, "died");
-		set_dead(data, 1);
-		return (-1);
+		if (now - last_meal > data->time_die + 5)
+		{
+			print_status(philo, "died");
+			set_dead(data, 1);
+			return (-1);
+		}
 	}
-	else
-		return (0);
+	else if (data->must_eat != -1 && philo->times_eaten < data->must_eat)
+	{
+		if (now - last_meal > data->time_die + 5)
+		{
+			print_status(philo, "died");
+			set_dead(data, 1);
+			return (-1);
+		}
+	}
+	return (0);
 }
 
 static int	check_all_full(t_data *data)
