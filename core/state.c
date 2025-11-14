@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 23:07:37 by rexposit          #+#    #+#             */
-/*   Updated: 2025/10/21 21:52:47 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/11/14 07:08:42 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	print_status(t_philo *philo, const char *msg)
 {
 	long long	ms;
 
-	if (get_dead(philo->data) == 1)
-		return ;
-	ms = now_ms() - philo->data->time_start;
-	if (ms == -1)
-		return ;
 	pthread_mutex_lock(&philo->data->prints);
-	if (philo->data->dead == 0
-		|| (msg[0]=='d' && msg[1]=='i' && msg[2]=='e' && msg[3]=='d'))
+	if (philo->data->dead && msg[0] != 'd')
+	{
+		pthread_mutex_unlock(&philo->data->prints);
+		return ;
+	}
+	ms = now_ms() - philo->data->time_start;
+	if (ms != -1)
 		printf("%lld %d %s\n", ms, philo->id, msg);
 	pthread_mutex_unlock(&philo->data->prints);
 }
