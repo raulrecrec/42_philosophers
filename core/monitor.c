@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:38:00 by rexposit          #+#    #+#             */
-/*   Updated: 2025/11/15 18:23:34 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/11/15 19:38:59 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 static int	scan_deaths(t_data *data, t_philo *philo, long long now)
 {
 	long long	last_meal;
+	int			times_eaten;
 
 	pthread_mutex_lock(&data->m_last_meal_ms);
 	last_meal = philo->last_meal_ms;
+	times_eaten = philo->times_eaten;
 	pthread_mutex_unlock(&data->m_last_meal_ms);
 	if (data->must_eat == -1)
 	{
@@ -28,7 +30,7 @@ static int	scan_deaths(t_data *data, t_philo *philo, long long now)
 			return (-1);
 		}
 	}
-	else if (data->must_eat != -1 && philo->times_eaten < data->must_eat)
+	else if (data->must_eat != -1 && times_eaten < data->must_eat)
 	{
 		if (now - last_meal > data->time_die)
 		{
