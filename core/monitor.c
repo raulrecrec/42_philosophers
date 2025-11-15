@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:38:00 by rexposit          #+#    #+#             */
-/*   Updated: 2025/11/15 19:41:22 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/11/15 20:05:03 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	scan_deaths(t_data *data, t_philo *philo, long long now)
 	}
 	return (0);
 }
-
 
 static int	check_all_full(t_data *data)
 {
