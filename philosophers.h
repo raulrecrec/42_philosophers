@@ -3,37 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:36:55 by rexposit          #+#    #+#             */
-/*   Updated: 2025/11/14 22:02:53 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/11/15 20:06:45 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
-# include <stdio.h>		// printf
-# include <stdlib.h>	// malloc, free
-# include <unistd.h>	// write, usleep
-# include <string.h>	// memset
-# include <sys/time.h>	// gettimeofday
-# include <pthread.h>	// threads & mutex
-# include <stdbool.h>	// bool
-# include <limits.h>	// INT_MAX
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <sys/time.h>
+# include <pthread.h>
+# include <stdbool.h>
+# include <limits.h>
 
-typedef struct philo t_philo;
+typedef struct philo	t_philo;
 
 typedef enum status_err
 {
 	ERR_OK = 0,
-	ERR_ARGS,				// argumentos inválidos / faltan
-	ERR_RANGE,				// valores fuera de rango (>0, etc.)
-	ERR_MALLOC,				// fallo en malloc
-	ERR_MUTEX_INIT,			// fallo al iniciar mutex
-	ERR_THREAD_CREATE,		// fallo al crear hilos
-	ERR_MUTEX_DESTROY		//fallo al destruir un mutex
-	// Añadir más según necesite
+	ERR_ARGS,
+	ERR_RANGE,
+	ERR_MALLOC,
+	ERR_MUTEX_INIT,
+	ERR_THREAD_CREATE,
+	ERR_MUTEX_DESTROY
 }	t_err;
 
 typedef struct data
@@ -50,9 +49,9 @@ typedef struct data
 	pthread_mutex_t	prints;
 	pthread_mutex_t	*full;
 	pthread_mutex_t	m_last_meal_ms;
-	t_philo	*philos;
-	t_err	err;
-} t_data;
+	t_philo			*philos;
+	t_err			err;
+}	t_data;
 
 typedef struct philo
 {
@@ -66,8 +65,7 @@ typedef struct philo
 	int				times_eaten;
 	int				target_meals;
 	t_data			*data;
-} t_philo;
-
+}	t_philo;
 
 // utils
 void		*ph_malloc(t_data *data, size_t size);
@@ -79,19 +77,20 @@ long long	now_ms(void);
 void		smart_usleep(long long ms);
 
 // core
-t_err	setup_alloc(t_data *data);
-t_err	init_mutexes(t_data *data);
-void	init_philos(t_data *data);
-int		get_dead(t_data *data);
-void	set_dead(t_data *data, int value);
-void	print_status(t_philo *philo, const char *msg);
-void	*philo_routine(void *arg);
-void	*monitor_routine(void *arg);
-void	destroy_forks(t_data *data);
-void	destroy_globals(t_data *data);
-void	free_arrays(t_data *data);
-void	cleanup_after_sim(t_data *data, pthread_t *thread, pthread_t monitor);
-int		create_threads_and_monitor(t_data *data, pthread_t **threads, pthread_t *monitor);
-
+t_err		setup_alloc(t_data *data);
+t_err		init_mutexes(t_data *data);
+void		init_philos(t_data *data);
+int			get_dead(t_data *data);
+void		set_dead(t_data *data, int value);
+void		print_status(t_philo *philo, const char *msg);
+void		*philo_routine(void *arg);
+void		*monitor_routine(void *arg);
+void		destroy_forks(t_data *data);
+void		destroy_globals(t_data *data);
+void		free_arrays(t_data *data);
+void		cleanup_after_sim(t_data *data, pthread_t *thread,
+				pthread_t monitor);
+int			create_threads_and_monitor(t_data *data,
+				pthread_t **threads, pthread_t *monitor);
 
 #endif
