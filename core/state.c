@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 23:07:37 by rexposit          #+#    #+#             */
-/*   Updated: 2025/11/14 07:08:42 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/11/15 18:34:46 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_status(t_philo *philo, const char *msg)
 	long long	ms;
 
 	pthread_mutex_lock(&philo->data->prints);
-	if (philo->data->dead && msg[0] != 'd')
+	if (get_dead(philo->data) && msg[0] != 'd')
 	{
 		pthread_mutex_unlock(&philo->data->prints);
 		return ;
